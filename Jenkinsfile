@@ -4,6 +4,7 @@ pipeline {
        stage('Build') {
           steps {
              sh 'mvn clean package'
+             sh 'docker build -t hello-spring .'
           }
        }
        stage('Test') {
@@ -13,7 +14,7 @@ pipeline {
        }
        stage('Deploy') {
           steps {
-            sh 'docker build -t hello-spring -p 8081:8081 .'
+            sh 'docker run hello-spring -p 8081:8081'
           }
        }
     }
