@@ -1,14 +1,10 @@
 pipeline {
 
     agent {
-      docker {
-       image 'zenika/alpine-maven'
-       args '-p 3000:3000'
-      }
-    }
-
-    environment {
-      CI = 'true'
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2 -p 3000:3000'
+        }
     }
 
     stages {
