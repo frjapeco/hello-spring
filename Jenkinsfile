@@ -13,7 +13,7 @@ pipeline {
              sh 'mvn clean package'
           }
        }
-       stage('Test') {
+       stage('Run') {
           steps {
               sh 'java -jar target/hello-spring-1.0-SNAPSHOT.jar'
           }
