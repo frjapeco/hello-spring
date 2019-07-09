@@ -3,7 +3,6 @@ pipeline {
     stages {
        stage('Build') {
           steps {
-             sh 'docker rm $(docker ps --filter name=hello-spring)'
              sh 'mvn clean package'
              sh 'docker build -t hello-spring .'
           }
