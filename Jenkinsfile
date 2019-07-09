@@ -14,7 +14,8 @@ pipeline {
        }
        stage('Deploy') {
           steps {
-            sh 'docker run hello-spring -p 8081:8081'
+            echo
+            # sh 'docker run hello-spring'
           }
        }
     }
