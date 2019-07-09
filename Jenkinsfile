@@ -15,7 +15,7 @@ pipeline {
        stage('Deploy') {
           steps {
             echo
-            # sh 'docker run hello-spring'
+            sh 'docker run hello-spring'
           }
        }
     }
