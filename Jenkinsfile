@@ -9,7 +9,7 @@ pipeline {
              sh 'mvn clean package -DskipTests'
           }
        }
-       if (params.INTEGRATION_TESTS == true) {
+       if (${params.INTEGRATION_TESTS} == true) {
            stage('Test') {
               steps {
                  sh 'mvn test'
