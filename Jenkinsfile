@@ -11,7 +11,9 @@ pipeline {
        }
        stage('Test') {
           steps {
-             sh 'mvn test'
+            if (${parameters.INTEGRATION_TESTS} == true) {
+                sh 'mvn test'
+            }
           }
        }
        stage('Deploy') {
