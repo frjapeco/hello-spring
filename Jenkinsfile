@@ -10,10 +10,10 @@ pipeline {
           }
        }
        stage('Test') {
+        when {
+            expression { return params.INTEGRATION_TESTS == true }
+        }
           steps {
-            when {
-                expression { params.INTEGRATION_TESTS == true }
-            }
             sh 'mvn test'
           }
        }
