@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        boolean(name: 'Integration Tests', defaultValue: true, description: 'Execute integration tests')
+        booleanParam(name: 'INTEGRATION_TESTS', defaultValue: true, description: 'Execute integration tests')
     }
     stages {
        stage('Build') {
@@ -9,10 +9,12 @@ pipeline {
              sh 'mvn clean package -DskipTests'
           }
        }
-       stage('Test') {
-          steps {
-             sh 'mvn test'
-          }
+       if (params.INTEGRATION_TESTS == true) {
+           stage('Test') {
+              steps {
+                 sh 'mvn test'
+              }
+           }
        }
        stage('Deploy') {
           steps {
