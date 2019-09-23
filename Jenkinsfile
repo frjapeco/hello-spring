@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        boolean(name: 'Integration Tests', defaultValue: true, description: 'Execute integration tests')
+    }
     stages {
        stage('Build') {
           steps {
